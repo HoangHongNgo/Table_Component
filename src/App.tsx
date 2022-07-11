@@ -1,4 +1,5 @@
 import * as React from "react";
+import { text } from "stream/consumers";
 import Table from "./Table";
 
 const header = [
@@ -8,15 +9,24 @@ const header = [
   },
   {
     key: 'name',
-    title: 'Name'
+    title: 'Name',
+    render: (value:any) => {
+      return <p>{value}</p>
+    }
   },
   {
     key: 'count',
-    title: 'Count'
+    title: 'Count',
+    render: (value:any) => {
+      return <p>{value}</p>
+    }
   },
   {
     key: 'imange',
-    title: 'Image'
+    title: 'Image',
+    render: (value:any) => {
+      return <img style={{width: value.width, height: value.height}} src={value.url}></img>
+    }
   }
 ]
 

@@ -1,28 +1,35 @@
 import React from 'react'
 
 
-interface header {
+interface header <T> {
     title : string,
-    key: string
+    key: string,
+    render?: (value: any) => React.ReactNode
 }
 
 interface TableProps<T extends {}> {
   items: T[],
-  header: header[]
+  header: header<T>[]
 }
 
-function objectValues<T extends {}>(obj: T) {
-  console.log(Object.keys(obj).map((objKey) => obj[objKey as keyof T]));
-  return Object.keys(obj).map((objKey) => obj[objKey as keyof T]); 
-  
+function objectKeys<T extends {}>(obj: T) {
+  return Object.keys(obj).map((objKey) => objKey as keyof T);
 }
 
 
 export default function Table<T extends {}>(props: TableProps<T>) {
     const handleConsole = () => {
     console.log(props.header, '>>>', props.items);
-    console.log(objectValues(props.header))
 }
+    const renderRow = (item: T, columns: header<T>[]) => {
+        return(
+            <tr>
+                {
+                    
+                }
+            </tr>
+        )
+    }
 
   return (
     <div>
@@ -36,6 +43,13 @@ export default function Table<T extends {}>(props: TableProps<T>) {
                 <th>{data.title}</th>
                 )}
             </thead>
+            <tbody>
+                {props.items.map((item) =>
+                    <tr>
+                        <td></td>
+                    </tr>
+                )}
+            </tbody>
         </table>
     </div>
   )
