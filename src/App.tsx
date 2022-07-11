@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import Table from "./Table";
 
-function App() {
+const header = [
+  {
+    key: 'id',
+    title: 'Title',
+  },
+  {
+    key: 'name',
+    title: 'Name'
+  },
+  {
+    key: 'count',
+    title: 'Count'
+  },
+  {
+    key: 'imange',
+    title: 'Image'
+  }
+]
+
+const stockItems = [
+  {
+    id: 1,
+    name: "Pencil",
+    count: 3,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538058-52edaa00-397b-11eb-8107-ea606bf90929.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 2,
+    name: "Paper",
+    count: 4,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538104-61d45c80-397b-11eb-8c56-b2de523b9aa3.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 3,
+    name: "Scissors",
+    count: 4,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  }
+];
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Table
+        header={header}
+        items={stockItems}
+      />
     </div>
   );
 }
-
-export default App;
