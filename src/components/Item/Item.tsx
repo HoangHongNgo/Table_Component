@@ -13,30 +13,13 @@ interface Props<T extends {}> {
   header: header<T>[];
 }
 
-function objectKeys<T extends {}>(obj: T) {
-  return Object.keys(obj).map((objKey) => objKey as keyof T);
-}
-
-
-
 export default function Item<T extends {}>(props: Props<T>) {
-  // const renderData = () => {
-  //   return objectKeys(item).map((keyItem) => {
-  //     return <td>{((item[keyItem]) as unknown) as React.ReactNode}</td>
-  //   })
-  // }
-
   return (
     <tr>
-      {props.header.map((column) => {
+      {props.header.map<JSX.Element>((column) => {
         return <Detail item_key={column.key} column={column} data={props.item} />
       }
       )}
-      {/* <tr>
-        {
-          renderData()
-        }
-      </tr> */}
     </tr>
   )
 }
